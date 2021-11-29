@@ -77,7 +77,6 @@ public class MainForm extends JFrame implements ActionListener{
        LeftPanel_init();
       
        add(leftPanel,BorderLayout.WEST);
-       
        JPanel righttpart = new JPanel(); 
        righttpart.setBackground(Color.red);
        righttpart.setPreferredSize(new Dimension(474,481));
@@ -85,26 +84,38 @@ public class MainForm extends JFrame implements ActionListener{
     }
 
     @Override
-   
-   
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
 
 
-         System.out.println(OvreView.getBackground().toString());
+        
          if(e.getSource() == OvreView) { 
+             add_edit.setSelected(false);
+             stats.setSelected(false);
+             export.setSelected(false);
+        
              paintComponent(OvreView);
          }
 
          if(e.getSource() == add_edit) { 
+            OvreView.setSelected(false);
+            stats.setSelected(false);
+            export.setSelected(false);
+
             paintComponent(add_edit);
         }
 
         if(e.getSource() == stats) { 
+            add_edit.setSelected(false);
+            OvreView.setSelected(false);
+            export.setSelected(false);
             paintComponent(stats);
         }
 
         if(e.getSource() == export) { 
+            add_edit.setSelected(false);
+            stats.setSelected(false);
+            OvreView.setSelected(false);
             paintComponent(export);
         }
 
@@ -122,14 +133,14 @@ public class MainForm extends JFrame implements ActionListener{
     public void paintComponent(JToggleButton but){ //use this in the actionListener(send the Button)
         Color BG,text; //initialize color for the text of the button + the background
         if(but.isSelected()){ // checks if button is pressed if so it changes the color of the text to white and the
-            //background to the main_color
-            BG = new Color(64,191,216);
-            text = Color.white;
+           
+            text = new Color(255,255,255);
         }else{ //default colors
-            // BG = new Color(238,238,238);
-            text = (Color.black);
+            but.setBackground(UIManager.getColor("Button.background"));
+            text = new Color(0,0,0);
         }
-        // but.setBackground(BG);
+        
+       
         but.setForeground(text);
     }
     
