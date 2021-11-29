@@ -77,10 +77,7 @@ public class MainForm extends JFrame implements ActionListener{
        LeftPanel_init();
       
        add(leftPanel,BorderLayout.WEST);
-       JPanel righttpart = new JPanel(); 
-       righttpart.setBackground(Color.red);
-       righttpart.setPreferredSize(new Dimension(474,481));
-       add(righttpart,BorderLayout.EAST);
+     
     }
 
     @Override
@@ -93,6 +90,12 @@ public class MainForm extends JFrame implements ActionListener{
              add_edit.setSelected(false);
              stats.setSelected(false);
              export.setSelected(false);
+
+             JPanel p = new JPanel();
+             p.setBackground(Color.BLUE);
+             p.setPreferredSize(new Dimension(474,481));
+
+             this.add(p,BorderLayout.EAST);
         
              paintComponent(OvreView);
          }
