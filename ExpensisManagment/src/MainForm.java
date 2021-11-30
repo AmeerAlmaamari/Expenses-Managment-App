@@ -4,7 +4,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.border.*;
 public class MainForm extends JFrame implements ActionListener{
     JToggleButton OvreView,add_edit,stats,export;
     JPanel ButtonContainer,leftPanel;
@@ -104,8 +103,12 @@ public class MainForm extends JFrame implements ActionListener{
             OvreView.setSelected(false);
             stats.setSelected(false);
             export.setSelected(false);
-
             paintComponent(add_edit);
+
+            Edit edit = new Edit();
+            this.add(edit,BorderLayout.EAST);
+
+            
         }
 
         if(e.getSource() == stats) { 
