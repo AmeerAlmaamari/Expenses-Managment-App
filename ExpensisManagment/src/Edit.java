@@ -151,8 +151,10 @@ public class Edit  extends JPanel implements ActionListener{
                 }
             } catch (Exception p) {
                 JOptionPane.showMessageDialog(null, "numbers only", "Erorr", JOptionPane.ERROR_MESSAGE);
+                return;
 
              }
+
                
 
             }
