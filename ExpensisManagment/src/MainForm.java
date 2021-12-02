@@ -80,6 +80,7 @@ public class MainForm extends JFrame implements ActionListener{
        LeftPanel_init();
       
        add(leftPanel,BorderLayout.WEST);
+       setLocationRelativeTo(null);
        setVisible(true);
      
     }
@@ -142,11 +143,7 @@ public class MainForm extends JFrame implements ActionListener{
 
         
     }
-    public static void main(String[] args) {
-        MainForm m = new MainForm();
-    }
-
-
+  
 
     public void paintComponent(JToggleButton but){ //use this in the actionListener(send the Button)
         Color BG,text; //initialize color for the text of the button + the background

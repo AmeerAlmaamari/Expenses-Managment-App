@@ -1,6 +1,10 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Arrays;
+import java.util.Scanner;
 
 public class Login implements ActionListener {
     JFrame login_frame = new JFrame("Login Form");
@@ -15,7 +19,6 @@ public class Login implements ActionListener {
 
     Login(){
 
-        login_frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         login_frame.setSize(730,500);
         login_frame.setLayout(null);
         login_frame.setBackground(Color.WHITE);
@@ -61,6 +64,7 @@ public class Login implements ActionListener {
         login_frame.add(reset_button);
         login_frame.add(username_label);
         login_frame.add(pass_label);
+        login_frame.setLocationRelativeTo(null);
         login_frame.setVisible(true);
 
 
@@ -75,6 +79,39 @@ public class Login implements ActionListener {
         if(e.getSource() == reset_button){
             username_field.setText("");
             password_field.setText("");
+        }
+
+        if (e.getSource() == login_button){
+                //  ExpensisManagment\files\login.txt
+
+                try {
+                    File myObj = new File("ExpensisManagment\\files\\login.txt");
+                    Scanner myReader = new Scanner(myObj);
+            
+                    while (myReader.hasNextLine()) {
+                      String data = myReader.nextLine();
+                    
+                      String [] te= data.split(";");  
+                      String [] info = {username_field.getText(),new String (password_field.getPassword())};
+                      
+                        if(Arrays.equals(te,info)){
+                               
+                                login_frame.setVisible(false);
+                                login_frame.dispose();
+                               MainForm mi = new MainForm();
+                               mi.OvreView.doClick();
+                        }else{
+
+                            JOptionPane.showMessageDialog(null, "password or user name are wrong ", "Erorr", JOptionPane.ERROR_MESSAGE);
+                            return;
+                        }
+                  }
+                 
+                  myReader.close();
+                } catch (FileNotFoundException r) {
+                    System.out.println("An error occurred.");
+                  }
+                
         }
     }
 

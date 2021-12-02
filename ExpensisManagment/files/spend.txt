@@ -1,0 +1,6 @@
+vehicle maintenance;1000.0
+Bills;1500.0
+Bills;1500.0
+Bills;1500.0
+Bills;1500.0
+

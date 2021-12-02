@@ -136,7 +136,21 @@ public class Edit  extends JPanel implements ActionListener{
 
       }
                 
-
+    
+    private void addSpend(double d ,String label){
+        try
+        {
+            String filename= "ExpensisManagment\\files\\spend.txt";
+            FileWriter fw = new FileWriter(filename,true); //the true will append the new data
+            fw.write(label+";"+d+"\n");
+            fw.close();
+           
+        }
+    catch(IOException ioe)
+        {
+            System.err.println("IOException: " + ioe.getMessage());
+        }
+    }
     @Override
     public void actionPerformed(ActionEvent e) {
 
@@ -149,6 +163,10 @@ public class Edit  extends JPanel implements ActionListener{
                     JOptionPane.showMessageDialog(null, "positive only", "Erorr", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
+
+                addSpend(d, comboBox.getSelectedItem().toString());
+                  
+
             } catch (Exception p) {
                 JOptionPane.showMessageDialog(null, "numbers only", "Erorr", JOptionPane.ERROR_MESSAGE);
                 return;
