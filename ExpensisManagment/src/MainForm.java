@@ -7,6 +7,10 @@ import java.awt.event.ActionListener;
 public class MainForm extends JFrame implements ActionListener{
     JToggleButton OvreView,add_edit,stats,export;
     JPanel ButtonContainer,leftPanel;
+    Edit edit = new Edit();
+    overview over = new overview();
+
+
 
     private void initButton() {
             OvreView = new JToggleButton("Over view");
@@ -67,7 +71,7 @@ public class MainForm extends JFrame implements ActionListener{
     
     MainForm (){
        setSize(715, 481);
-       setVisible(true);
+   
        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
        setLayout(new BorderLayout());
 
@@ -76,6 +80,7 @@ public class MainForm extends JFrame implements ActionListener{
        LeftPanel_init();
       
        add(leftPanel,BorderLayout.WEST);
+       setVisible(true);
      
     }
 
@@ -90,13 +95,16 @@ public class MainForm extends JFrame implements ActionListener{
              stats.setSelected(false);
              export.setSelected(false);
 
-             JPanel p = new JPanel();
-             p.setBackground(Color.BLUE);
-             p.setPreferredSize(new Dimension(474,481));
-
-             this.add(p,BorderLayout.EAST);
+    
+            edit.setVisible(false);
+            over.setVisible(true);
+         
+            this.add(over,BorderLayout.EAST);
+            SwingUtilities.updateComponentTreeUI(this);
         
              paintComponent(OvreView);
+             
+
          }
 
          if(e.getSource() == add_edit) { 
@@ -105,8 +113,12 @@ public class MainForm extends JFrame implements ActionListener{
             export.setSelected(false);
             paintComponent(add_edit);
 
-            Edit edit = new Edit();
+            over.setVisible(false);
+            edit.setVisible(true);
+
             this.add(edit,BorderLayout.EAST);
+            SwingUtilities.updateComponentTreeUI(this);
+
 
             
         }
