@@ -26,6 +26,7 @@ public class Edit  extends JPanel implements ActionListener{
     JPanel Panel = new JPanel();
     JComboBox comboBox = new JComboBox<>();
     JButton addButton = new JButton("+");
+    JButton BudgetButton = new JButton("new Budget");
 
     JPanel subPanel = new JPanel();
     JButton applyButton = new JButton("apply");
@@ -39,6 +40,10 @@ public class Edit  extends JPanel implements ActionListener{
         label.setBounds(30, 0, 130, 50);
         jTextField.setBounds(30, 50, 130, 30);
         jTextField.setBorder(null);   
+        BudgetButton.setBounds(170, 50, 110, 30);
+
+        BudgetButton.addActionListener(this);
+        add(BudgetButton);
         add(label);
         add(jTextField);
 
@@ -151,6 +156,23 @@ public class Edit  extends JPanel implements ActionListener{
             System.err.println("IOException: " + ioe.getMessage());
         }
     }
+    
+    private void addBudget(double d){
+        try
+        {
+            String filename= "ExpensisManagment\\files\\Budget.txt";
+            FileWriter fw = new FileWriter(filename,true); //the true will append the new data
+            fw.write(d+";");
+            fw.close();
+           
+        }
+    catch(IOException ioe)
+        {
+            System.err.println("IOException: " + ioe.getMessage());
+        }
+    }
+   
+   
     @Override
     public void actionPerformed(ActionEvent e) {
 
@@ -186,7 +208,31 @@ public class Edit  extends JPanel implements ActionListener{
 
            
         }
+         
+        if(e.getSource() == BudgetButton){
+            try {
+                double  d = Double.parseDouble(jTextField.getText());
+                if (d<0){
 
+                    JOptionPane.showMessageDialog(null, "positive only", "Erorr", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
+                addBudget(d);
+                jTextField.setText("");
+
+
+                  
+
+            } catch (Exception p) {
+                JOptionPane.showMessageDialog(null, "numbers only", "Erorr", JOptionPane.ERROR_MESSAGE);
+                return;
+
+             }
+
+               
+
+        }
 
         if(e.getSource() == clearButton){
             jTextField.setText("");
