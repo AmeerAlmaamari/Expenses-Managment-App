@@ -9,17 +9,15 @@ public class overview extends JPanel {
     private JLabel label3 = new JLabel();//spent value
     private JLabel label4 = new JLabel();//total spent text
     private JLabel label5 = new JLabel();//budget value
-    private JPanel panel1 = new JPanel();//panel to hold all
     private JPanel panel2 = new JPanel();//overall text + separator
     private JPanel panel3 = new JPanel();//spent text & value + separator + month budget text & value
     private JSeparator s = new JSeparator();
     private JSeparator s1 = new JSeparator();
-    public overview() {
-        in();
+    overview() {
+       in();
     }
 
-    public JPanel in(){
-        panel1 = new JPanel();
+    public void in(){
         label1.setFont(new Font("Malgun Gothic Semilight", 1, 41)); // NOI18N
         label1.setText("OverAll");
 
@@ -54,7 +52,7 @@ public class overview extends JPanel {
         panel2.add(s);
         panel2.setLayout(new GridLayout(0,1,0,0));
         //label2.setBounds(150, 100, size.width, size.height);
-        panel1.setLayout(new BorderLayout(0,0));
+        setLayout(new BorderLayout(0,0));
         group.setHorizontalGroup(group.createParallelGroup(GroupLayout.Alignment.CENTER).addGroup(GroupLayout.Alignment.CENTER, group.createSequentialGroup()
                 .addGroup(group.createParallelGroup(GroupLayout.Alignment.CENTER)
                 .addGroup(group.createSequentialGroup().addGap(51, 51, 51).addComponent(label4))
@@ -75,8 +73,7 @@ public class overview extends JPanel {
                   .addGap(72, 72, 72).addComponent(label5)).addGroup(group.createSequentialGroup().addGap(70, 70, 70)
                    .addComponent(label4).addGap(70, 70, 70).addComponent(label3))).addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
 
-        panel1.add(panel2, BorderLayout.NORTH); panel1.add(panel3,BorderLayout.CENTER);
-        panel1.setPreferredSize(new Dimension(434,441));
-        return panel1;
+        add(panel2, BorderLayout.NORTH); add(panel3,BorderLayout.CENTER);
+        setPreferredSize(new Dimension(434,441));
     }
 }
