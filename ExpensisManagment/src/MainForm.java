@@ -99,10 +99,10 @@ public class MainForm extends JFrame implements ActionListener{
     
             edit.setVisible(false);
             over.setVisible(true);
-         
+            over.update();
             this.add(over,BorderLayout.EAST);
             SwingUtilities.updateComponentTreeUI(this);
-        
+            
              paintComponent(OvreView);
              
 
