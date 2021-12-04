@@ -53,7 +53,7 @@ public class overview extends JPanel {
 
     public void update(){
         budget = count("ExpensisManagment\\files\\Budget.txt", 1);
-        spent += count("ExpensisManagment\\files\\spend.txt", 0);
+        spent  = count("ExpensisManagment\\files\\spend.txt", 0);
         label3.setText(Double.toString(spent));
         label5.setText(Double.toString(budget));
 
