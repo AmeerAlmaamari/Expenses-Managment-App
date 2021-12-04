@@ -186,8 +186,16 @@ public class Edit  extends JPanel implements ActionListener{
                     JOptionPane.showMessageDialog(null, "positive only", "Erorr", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
-
+                overview O= new overview() ;
+                if (O.count("ExpensisManagment\\files\\spend.txt", 0)+d > O.count("ExpensisManagment\\files\\Budget.txt", 1) ){
+                    JOptionPane.showMessageDialog(null, "There is not enough money", "Erorr", JOptionPane.ERROR_MESSAGE);
+                    return;
+                               
+                }
                 addSpend(d, comboBox.getSelectedItem().toString());
+                jTextField.setText("");
+
+
                   
 
             } catch (Exception p) {

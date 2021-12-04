@@ -25,7 +25,6 @@ public class overview extends JPanel {
         try {
             File file = new File(file_Loc);
             Scanner reader = new Scanner(file);
-            System.out.println("read");
             if(ch ==0){
             while (reader.hasNext()){
                 String dataS = reader.nextLine();
@@ -38,7 +37,6 @@ public class overview extends JPanel {
                     if(in.equals(";")){
                         continue;
                     }else{
-                        System.out.println(in);
                         data += Double.parseDouble(in.replaceAll(";",""));
                         }
                 }}
@@ -47,7 +45,6 @@ public class overview extends JPanel {
             System.out.println("could not open the file");
             r.printStackTrace();
         }
-        System.out.println(data);
         return data;
     }
 
