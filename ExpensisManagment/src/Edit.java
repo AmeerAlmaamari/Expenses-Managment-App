@@ -31,6 +31,7 @@ public class Edit  extends JPanel implements ActionListener{
     JPanel subPanel = new JPanel();
     JButton applyButton = new JButton("apply");
     JButton clearButton = new JButton("Clear");
+    
 
 
     
@@ -149,6 +150,8 @@ public class Edit  extends JPanel implements ActionListener{
             FileWriter fw = new FileWriter(filename,true); //the true will append the new data
             fw.write(label+";"+d+"\n");
             fw.close();
+            overview o = new overview();
+            o.update();
            
         }
     catch(IOException ioe)
@@ -164,6 +167,8 @@ public class Edit  extends JPanel implements ActionListener{
             FileWriter fw = new FileWriter(filename,true); //the true will append the new data
             fw.write(d+";");
             fw.close();
+            overview o = new overview();
+            o.update();
            
         }
     catch(IOException ioe)
