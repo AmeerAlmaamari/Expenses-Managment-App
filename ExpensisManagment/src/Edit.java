@@ -158,20 +158,6 @@ public class Edit  extends JPanel implements ActionListener{
         }
     }
     
-    private void addBudget(double d){
-        try
-        {
-            String filename= "ExpensisManagment\\files\\Budget.txt";
-            FileWriter fw = new FileWriter(filename,true); //the true will append the new data
-            fw.write(d+";");
-            fw.close();
-           
-        }
-    catch(IOException ioe)
-        {
-            System.err.println("IOException: " + ioe.getMessage());
-        }
-    }
    
    
     @Override
@@ -187,7 +173,7 @@ public class Edit  extends JPanel implements ActionListener{
                     return;
                 }
                 overview O= new overview() ;
-                if (O.count("ExpensisManagment\\files\\spend.txt", 0)+d > O.count("ExpensisManagment\\files\\Budget.txt", 1) ){
+                if (O.count("ExpensisManagment\\files\\spend.txt")+d > O.count("ExpensisManagment\\files\\Budget.txt") ){
                     JOptionPane.showMessageDialog(null, "There is not enough money", "Erorr", JOptionPane.ERROR_MESSAGE);
                     return;
                                
@@ -219,27 +205,9 @@ public class Edit  extends JPanel implements ActionListener{
         }
          
         if(e.getSource() == BudgetButton){
-            try {
-                double  d = Double.parseDouble(jTextField.getText());
-                if (d<0){
-
-                    JOptionPane.showMessageDialog(null, "positive only", "Erorr", JOptionPane.ERROR_MESSAGE);
-                    return;
-                }
-
-                addBudget(d);
-                jTextField.setText("");
-
-
-                  
-
-            } catch (Exception p) {
-                JOptionPane.showMessageDialog(null, "numbers only", "Erorr", JOptionPane.ERROR_MESSAGE);
-                return;
-
-             }
-
-               
+             
+             input i = new input();
+             i.inputForm("add Budget");  
 
         }
 

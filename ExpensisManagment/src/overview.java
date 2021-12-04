@@ -20,26 +20,17 @@ public class overview extends JPanel {
        in();
     }
 
-    public double count(String file_Loc, int ch){
+    public double count(String file_Loc){
         double data = 0;
         try {
             File file = new File(file_Loc);
             Scanner reader = new Scanner(file);
-            if(ch ==0){
+           
             while (reader.hasNext()){
                 String dataS = reader.nextLine();
                 String [] te= dataS.split(";");
                 data += Double.parseDouble(te[1]);
-                }}else{
-                while(reader.hasNext()){
-                    reader.useDelimiter(";");
-                    String in = reader.next();
-                    if(in.equals(";")){
-                        continue;
-                    }else{
-                        data += Double.parseDouble(in.replaceAll(";",""));
-                        }
-                }}
+                }
             reader.close();
         } catch (FileNotFoundException r) {
             System.out.println("could not open the file");
@@ -49,8 +40,8 @@ public class overview extends JPanel {
     }
 
     public void update(){
-        budget = count("ExpensisManagment\\files\\Budget.txt", 1);
-        spent  = count("ExpensisManagment\\files\\spend.txt", 0);
+        budget = count("ExpensisManagment\\files\\Budget.txt");
+        spent  = count("ExpensisManagment\\files\\spend.txt");
         label3.setText(Double.toString(spent));
         label5.setText(Double.toString(budget));
 
