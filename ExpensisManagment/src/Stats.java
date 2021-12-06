@@ -20,7 +20,7 @@ import javax.swing.table.JTableHeader;
 
 // button listener should be changed to stats_button
 // directory of the file should be changed
-public class Stats implements ActionListener{
+public class Stats extends JPanel{
     JPanel stats_panel;
     JScrollPane ScrollPane;
     JTable stats_table;
@@ -28,13 +28,14 @@ public class Stats implements ActionListener{
     
     Stats()
     {
-       
         stats_panel = new JPanel(new BorderLayout());
         stats_table = new JTable();
         
          
         ScrollPane = new JScrollPane(stats_table);
+        
         stats_panel.setPreferredSize(new Dimension(474,481));
+        stats_panel.add(stats_table);
         stats_panel.add(ScrollPane, BorderLayout.CENTER);
         
         
@@ -47,19 +48,10 @@ public class Stats implements ActionListener{
                 .setHorizontalAlignment(JLabel.CENTER);
         
         stats_table.setFont(new Font("Arial", Font.BOLD, 15));
-          
-          
-   
-
     }
     
-    public static void main(String arg[]) {
-    Stats th  = new Stats();
-    
-  }
-    public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == button){  // button of Statistics
-            
+    public void spend_read(){
+          
          String filePath = "C:\\Users\\COLD\\Desktop\\test.txt";
          File file = new File(filePath);
          
@@ -80,9 +72,5 @@ public class Stats implements ActionListener{
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(Stats.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
-        
-        }
-        
-    }  
+          }
 }
