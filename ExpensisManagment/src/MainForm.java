@@ -9,7 +9,7 @@ public class MainForm extends JFrame implements ActionListener{
     JPanel ButtonContainer,leftPanel;
     Edit edit = new Edit();
     overview over = new overview();
-    Stats stats = new Stats();
+    Stats s = new Stats();
 
 
 
@@ -130,12 +130,14 @@ public class MainForm extends JFrame implements ActionListener{
             OvreView.setSelected(false);
             add_edit.setSelected(false);
             export.setSelected(false);
-            paintComponent(stats);
-            stats.spend_read();
-            over.setVisible(false);
-            stats.setVisible(true);
 
-            this.add(stats,BorderLayout.EAST);
+            paintComponent(stats);
+
+            s.spend_read();
+            over.setVisible(false);
+            s.setVisible(true);
+
+            this.add(s,BorderLayout.EAST);
             SwingUtilities.updateComponentTreeUI(this);
 
 

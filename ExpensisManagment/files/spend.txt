@@ -1,1 +1,5 @@
 supermarkt;21000.0
+Bills;100.0
+internet;1211.0
+vehicle maintenance;211.0
+test;2111.0

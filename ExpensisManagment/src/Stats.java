@@ -52,7 +52,7 @@ public class Stats extends JPanel{
     
     public void spend_read(){
           
-         String filePath = "C:\\Users\\COLD\\Desktop\\test.txt";
+         String filePath = "ExpensisManagment\\files\\spend.txt";
          File file = new File(filePath);
          
             try {
