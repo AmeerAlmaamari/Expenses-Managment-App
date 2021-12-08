@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class MainForm extends JFrame implements ActionListener{
-    JToggleButton OvreView,add_edit,stats,export;
+    JToggleButton OvreView,add_edit,stats,exit;
     JPanel ButtonContainer,leftPanel;
     Edit edit = new Edit();
     overview over = new overview();
@@ -27,14 +27,14 @@ public class MainForm extends JFrame implements ActionListener{
             stats.setPreferredSize(new Dimension(155,40));
             stats.setBorder(BorderFactory.createEmptyBorder(5,5,5,5));
 
-            export = new JToggleButton("Export");
-            export.setPreferredSize(new Dimension(155,40));
-            export.setBorder(BorderFactory.createEmptyBorder(5,5,5,5));
+            exit = new JToggleButton("exit");
+            exit.setPreferredSize(new Dimension(155,40));
+            exit.setBorder(BorderFactory.createEmptyBorder(5,5,5,5));
 
             OvreView.addActionListener(this);
             add_edit.addActionListener(this);
             stats.addActionListener(this);
-            export.addActionListener(this);
+            exit.addActionListener(this);
 
 
 }
@@ -63,7 +63,7 @@ public class MainForm extends JFrame implements ActionListener{
             buttons.add(OvreView, gbc);
             buttons.add(add_edit, gbc);
             buttons.add(stats, gbc);
-            buttons.add(export, gbc);
+            buttons.add(exit, gbc);
             gbc.weighty = 10;
             leftPanel.add(buttons, gbc);
 
@@ -95,7 +95,7 @@ public class MainForm extends JFrame implements ActionListener{
          if(e.getSource() == OvreView) { 
              add_edit.setSelected(false);
              stats.setSelected(false);
-             export.setSelected(false);
+             exit.setSelected(false);
 
     
             edit.setVisible(false);
@@ -104,7 +104,6 @@ public class MainForm extends JFrame implements ActionListener{
             this.add(over,BorderLayout.EAST);
             SwingUtilities.updateComponentTreeUI(this);
             
-             paintComponent(OvreView);
              
 
          }
@@ -112,8 +111,7 @@ public class MainForm extends JFrame implements ActionListener{
          if(e.getSource() == add_edit) { 
             OvreView.setSelected(false);
             stats.setSelected(false);
-            export.setSelected(false);
-            paintComponent(add_edit);
+            exit.setSelected(false);
 
             over.setVisible(false);
             edit.setVisible(true);
@@ -129,9 +127,8 @@ public class MainForm extends JFrame implements ActionListener{
             
             OvreView.setSelected(false);
             add_edit.setSelected(false);
-            export.setSelected(false);
+            exit.setSelected(false);
 
-            paintComponent(stats);
 
             s.spend_read();
             over.setVisible(false);
@@ -143,11 +140,9 @@ public class MainForm extends JFrame implements ActionListener{
 
         }
 
-        if(e.getSource() == export) { 
-            add_edit.setSelected(false);
-            stats.setSelected(false);
-            OvreView.setSelected(false);
-            paintComponent(export);
+        if(e.getSource() == exit) { 
+             
+             System.exit(0);
         }
 
         
@@ -157,19 +152,6 @@ public class MainForm extends JFrame implements ActionListener{
     }
   
 
-    public void paintComponent(JToggleButton but){ //use this in the actionListener(send the Button)
-        Color BG,text; //initialize color for the text of the button + the background
-        if(but.isSelected()){ // checks if button is pressed if so it changes the color of the text to white and the
-           
-            text = new Color(255,255,255);
-        }else{ //default colors
-            but.setBackground(UIManager.getColor("Button.background"));
-            text = new Color(0,0,0);
-        }
-        
-       
-        but.setForeground(text);
-    }
-    
+  
     
 }
